@@ -1,0 +1,24 @@
+# ==============================================================================
+# RetailPulse: Python Dependencies (Member 1 - Data Engineering)
+# Compatible with Python 3.10 and 3.11
+# ==============================================================================
+
+# Dataset Generation & Manipulation
+pandas>=2.0.0,<3.0.0
+numpy>=1.24.0,<2.0.0
+faker>=24.0.0,<30.0.0
+
+# PostgreSQL Connection & Loading
+psycopg2-binary>=2.9.9
+SQLAlchemy>=2.0.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Google BigQuery Client
+google-cloud-bigquery>=3.20.0
+
+# dbt Core & BigQuery Adapter (dbt 1.8.x LTS release)
+dbt-core~=1.8.0
+dbt-bigquery~=1.8.0
+

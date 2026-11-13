@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Standardised, cleansed, and deduplicated view of retail orders from raw_retail.orders."
+    columns:
+      - name: order_id
+        description: "Primary key identifier for each customer transaction."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: order_date
+        description: "Calendar date when the purchase occurred (cast to DATE)."
+        data_tests:
+          - not_null
+
+      - name: product
+        description: "Standardised, whitespace-trimmed product catalog description."
+        data_tests:
+          - not_null
+
+      - name: region
+        description: "Standardised, whitespace-trimmed geographic sales territory."
+        data_tests:
+          - not_null
+
+      - name: quantity
+        description: "Number of units purchased in the order (positive integer)."
+        data_tests:
+          - not_null
+
+      - name: unit_price
+        description: "Unit selling price in Indian Rupees (INR, numeric > 0)."
+        data_tests:
+          - not_null
+
+      - name: revenue
+        description: "Calculated transaction total: quantity * unit_price (rounded to 2 decimal places)."
+        data_tests:
+          - not_null
+

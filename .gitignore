@@ -1,0 +1,81 @@
+# ==========================================
+# RetailPulse: Git Ignore Configuration
+# Protects secrets, environment variables,
+# virtual environments, and generated artifacts
+# ==========================================
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pkcs12
+
+# Credentials & Service Account keys
+*service-account*.json
+*credentials*.json
+*gcp-key*.json
+secrets/
+keys/
+
+# Database dumps and local storage
+*.dump
+*.sql.gz
+*.db
+*.sqlite3
+
+# Local dbt credentials
+profiles.yml
+dbt_retailpulse/profiles.yml
+
+# Python virtual environments & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# dbt generated artifacts & logs
+dbt_retailpulse/target/
+dbt_retailpulse/dbt_packages/
+dbt_retailpulse/logs/
+target/
+dbt_packages/
+logs/
+
+# IDE & Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Airbyte local temporary data (if running local docker runner)
+airbyte_local/
+*.log

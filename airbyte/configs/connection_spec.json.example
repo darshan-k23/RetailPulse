@@ -1,0 +1,22 @@
+{
+  "connection_name": "Postgres_to_BigQuery_Orders",
+  "source": {
+    "name": "Postgres_RetailSource",
+    "connector": "source-postgres",
+    "host": "host.docker.internal",
+    "port": 5432,
+    "database": "retail_source",
+    "schema": "public",
+    "stream": "orders"
+  },
+  "destination": {
+    "name": "BigQuery_RawRetail",
+    "connector": "destination-bigquery",
+    "dataset": "raw_retail",
+    "table": "orders",
+    "loading_method": "Standard (Batched Inserts)"
+  },
+  "sync_mode": "Full Refresh | Overwrite",
+  "notes": "Member 1 configures via Airbyte UI; Member 2 uses connection_id in Airflow AirbyteTriggerSyncOperator"
+}
+

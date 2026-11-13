@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: raw_retail
+    # Resolves project ID dynamically from env var GCP_PROJECT_ID, with fallback
+    database: "{{ env_var('GCP_PROJECT_ID', 'MY_GCP_PROJECT_ID') }}"
+    schema: raw_retail
+    description: "Raw transactional retail sales data ingested from PostgreSQL via Airbyte"
+    tables:
+      - name: orders
+        description: "Raw orders table containing retail sales transactions"
+        columns:
+          - name: order_id
+            description: "Primary key identifier for the retail transaction"
+            tests:
+              - unique
+              - not_null
+          - name: order_date
+            description: "Calendar date when transaction was recorded"
+            tests:
+              - not_null
+          - name: product
+            description: "Product catalog name"
+            tests:
+              - not_null
+          - name: region
+            description: "Geographic territory (West, North, South, East, Central)"
+            tests:
+              - not_null
+          - name: quantity
+            description: "Number of units ordered (1-5)"
+            tests:
+              - not_null
+          - name: unit_price
+            description: "Base unit price in INR"
+            tests:
+              - not_null

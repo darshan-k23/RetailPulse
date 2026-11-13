@@ -1,0 +1,40 @@
+# ==============================================================================
+# dbt Profiles Template for RetailPulse
+#
+# INSTRUCTIONS:
+# Copy this content into your user-level dbt configuration directory:
+#   Windows path: %USERPROFILE%\.dbt\profiles.yml
+#                 (e.g., C:\Users\<YourUser>\.dbt\profiles.yml)
+#
+# DO NOT place your real profiles.yml in Git!
+# ==============================================================================
+
+retailpulse:
+  target: dev
+  outputs:
+    # --------------------------------------------------------------------------
+    # Option 1: Service Account Key (Recommended for Microprojects)
+    # --------------------------------------------------------------------------
+    dev:
+      type: bigquery
+      method: service-account
+      project: YOUR_GCP_PROJECT_ID        # e.g., retailpulse-warehouse-12345
+      dataset: analytics_retail           # Target dataset for dbt transformations
+      threads: 4
+      keyfile: C:\Users\Swapnaja\OneDrive\Desktop\RetailPulse\keys\gcp_service_account.json
+      timeout_seconds: 300
+      location: US                        # Must match your raw_retail dataset region (e.g. US)
+      priority: interactive
+
+    # --------------------------------------------------------------------------
+    # Option 2: OAuth via gcloud CLI (Application Default Credentials)
+    # --------------------------------------------------------------------------
+    dev_oauth:
+      type: bigquery
+      method: oauth
+      project: YOUR_GCP_PROJECT_ID
+      dataset: analytics_retail
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive

@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: sales_by_product
+    description: "Product-level performance mart aggregating orders, quantity, and gross revenue."
+    columns:
+      - name: product
+        description: "Unique product catalog name."
+        data_tests:
+          - unique
+          - not_null
+      - name: total_orders
+        description: "Count of distinct transactions for this product."
+        data_tests:
+          - not_null
+      - name: total_quantity
+        description: "Total volume of units sold across all orders."
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Cumulative gross sales revenue in INR."
+        data_tests:
+          - not_null
+
+  - name: sales_by_region
+    description: "Regional business performance mart aggregating orders, quantity, and revenue by geographic territory."
+    columns:
+      - name: region
+        description: "Unique geographic territory name."
+        data_tests:
+          - unique
+          - not_null
+      - name: total_orders
+        description: "Count of distinct transactions in this region."
+        data_tests:
+          - not_null
+      - name: total_quantity
+        description: "Total volume of units ordered in this region."
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Cumulative gross sales revenue in INR for this region."
+        data_tests:
+          - not_null
+
+  - name: monthly_sales
+    description: "Time-series mart aggregating retail sales performance by month."
+    columns:
+      - name: month_start
+        description: "First calendar date of the month (YYYY-MM-01)."
+        data_tests:
+          - unique
+          - not_null
+      - name: total_orders
+        description: "Count of distinct transactions during the month."
+        data_tests:
+          - not_null
+      - name: total_quantity
+        description: "Total units purchased during the month."
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Cumulative gross sales revenue in INR for the month."
+        data_tests:
+          - not_null
+
