@@ -79,3 +79,10 @@ $RECYCLE.BIN/
 # Airbyte local temporary data (if running local docker runner)
 airbyte_local/
 *.log
+
+# Apache Airflow runtime files
+airflow/logs/
+airflow/*.pid
+airflow/airflow.cfg
+airflow/airflow.db
+
